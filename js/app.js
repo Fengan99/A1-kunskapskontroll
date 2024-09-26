@@ -39,7 +39,7 @@ function showRandomNumberPlayer() {
 }
 
 function getRandomNumberAi() {
-  aiRoll = Math.floor(Math.random() * 6 ) +1
+  aiRoll = Math.floor(Math.random() * 6 ) +1;
 }
 
 function showRandomNumberAi() {
