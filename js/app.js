@@ -18,7 +18,8 @@ let aiScore = 0;
 let scoreBoardDraw = 0;
 
 //FUNCTION
-
+loadCookie();
+showScoreBoard();
 button0.addEventListener("click", () => {
   //ALLT här inne händer när jag tycker på knappen
   getRandomNumberPlayer();
@@ -27,6 +28,7 @@ button0.addEventListener("click", () => {
   showRandomNumberAi();
   showResult();
   showScoreBoard();
+  saveCookie();
 
 });
 
@@ -46,6 +48,8 @@ function showRandomNumberAi() {
   aiRollText.innerHTML = " Ai Score " + aiRoll;
 }
 
+
+
 function showResult() {
   if (playerRoll > aiRoll) {
     playerScore++;
@@ -61,19 +65,46 @@ function showResult() {
 
 function showScoreBoard() {
 
-  if (playerRoll > aiRoll) {
-
     playerScoreText.innerHTML = " Player Score: " + playerScore;
-  }
-  else if (playerRoll < aiRoll) {
 
     aiScoreText.innerHTML = " Ai Score: " + aiScore;
 
-  }
-  else  {
     scoreBoardDrawText.innerHTML = " Draw " + scoreBoardDraw;
-  }
+
 }
 
+
+function saveCookie() {
+
+  document.cookie = "playerScore=" + playerScore + ";expires=Thu, 29 Dec 2025 12:00:00 UTC";
+  document.cookie = "aiScore=" + aiScore + ";expires=Thu, 29 Dec 2025 12:00:00 UTC";
+  document.cookie = "scoreBoardDraw=" + scoreBoardDraw + ";expires=Thu, 29 Dec 2025 12:00:00 UTC";
+}
+
+function loadCookie() {
+  playerScore = getCookie("playerScore");
+  aiScore = getCookie("aiScore");
+scoreBoardDraw = getCookie("scoreBoardDraw");
+}
+
+
+
+
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return 0;
+}
 
 
