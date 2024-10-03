@@ -8,7 +8,6 @@ const aiScoreText = document.getElementById("aiScoreText");
 const scoreBoardDrawText = document.getElementById("scoreBoardDrawText");
 const button0 = document.getElementById("button0");
 
-
 // DATA
 
 let playerRoll = 0;
@@ -29,8 +28,8 @@ button0.addEventListener("click", () => {
   showResult();
   showScoreBoard();
   saveCookie();
-
 });
+
 
 function getRandomNumberPlayer() {
 playerRoll = Math.floor(Math.random() * 6 ) +1;
@@ -65,9 +64,9 @@ function showResult() {
 
 function showScoreBoard() {
 
-    playerScoreText.innerHTML = " Player Score: " + playerScore;
+    playerScoreText.innerHTML = " Table Score Player: " + playerScore;
 
-    aiScoreText.innerHTML = " Ai Score: " + aiScore;
+    aiScoreText.innerHTML = " Table Score Ai: " + aiScore;
 
     scoreBoardDrawText.innerHTML = " Draw " + scoreBoardDraw;
 
